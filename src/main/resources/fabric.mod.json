@@ -3,6 +3,12 @@
   "id": "modid",
   "version": "${version}",
 
+  "custom": {
+    "cardinal-components": [
+      "primordium:primordium"
+    ]
+  },
+
   "name": "Example Mod",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
@@ -19,18 +25,22 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "com.oyosite.ticon.primordium.Primordium"
+    ],
+    "cardinal-components": [
+      "com.oyosite.ticon.primordium.component.ChunkEntrypoint"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "primordium.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
     "minecraft": "1.17.x",
-    "java": ">=16"
+    "java": ">=16",
+    "geckolib3": "*"
   },
   "suggests": {
     "another-mod": "*"
