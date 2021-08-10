@@ -1,5 +1,6 @@
 package com.oyosite.ticon.primordium.block;
 
+import com.oyosite.ticon.primordium.block.entity.PrimordiumNode;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
@@ -8,9 +9,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.BiFunction;
 
-public class PrimordiumNodeBlock extends BlockWithEntity {
-    private final PrimordiumNodeBlockEntityFactory PNBEFactory;
-    protected PrimordiumNodeBlock(Settings settings, PrimordiumNodeBlockEntityFactory PNBEFactory) {
+public class PrimordiumNodeBlock<N extends PrimordiumNode> extends BlockWithEntity {
+    private final PrimordiumNodeBlockEntityFactory<N> PNBEFactory;
+    protected PrimordiumNodeBlock(Settings settings, PrimordiumNodeBlockEntityFactory<N> PNBEFactory) {
         super(settings);
         this.PNBEFactory = PNBEFactory;
     }
@@ -20,5 +21,5 @@ public class PrimordiumNodeBlock extends BlockWithEntity {
         return PNBEFactory.apply(pos, state);
     }
 
-    public interface PrimordiumNodeBlockEntityFactory extends BiFunction<BlockPos, BlockState, BlockEntity>{}
+    public interface PrimordiumNodeBlockEntityFactory<N extends PrimordiumNode> extends BiFunction<BlockPos, BlockState, N>{}
 }
